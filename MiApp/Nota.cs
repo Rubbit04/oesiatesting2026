@@ -31,6 +31,20 @@ namespace MiApp
 
         }
 
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+                return false;
+
+            Nota other = (Nota)obj;
+            return Valor == other.Valor;
+        }
+
+        public override int GetHashCode()
+        {
+            return Valor.GetHashCode();
+        }
+
     }
 
 }

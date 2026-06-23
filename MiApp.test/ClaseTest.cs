@@ -1,4 +1,5 @@
 using MiApp;
+using Moq;
 public class ClaseTests
 
 {
@@ -23,18 +24,43 @@ public class ClaseTests
     }
 
     [Fact]
-    public void EliminarAlumno_CuandoSeElimina_ElAlumnoNoEstaEnLaLista()
+    public void EliminarAlumno_CuandoAlumnoExiste_LoEliminaDeLaLista()
+    {
+        // Arrange
+        var alumno1 = new Alumno(1, "Juan");
+        var alumno2 = new Alumno(2, "María");
+        var claseConAlumnos = new Clase("Matemáticas", new List<Alumno> { alumno1, alumno2 });
+
+        // Act
+        claseConAlumnos.EliminarAlumno(alumno1);
+
+        // Assert
+        Assert.DoesNotContain(alumno1, claseConAlumnos.Alumnos);
+        Assert.Single(claseConAlumnos.Alumnos);
+        Assert.Contains(alumno2, claseConAlumnos.Alumnos);
+
+    }
+    [Fact]
+    public void ObtenerMediaClase_CuandoHayAlumnos_DevuelveLaMediaDeTodos()
 
     {
         // Arrange
-        var alumno = new Alumno(1, "Juan");
-        var claseConAlumno = new Clase("Matemáticas", new List<Alumno> { alumno });
+        var alumno1 = new Mock<Alumno>();
+        alumno1.Setup(a=> a.ObtenerNotaMedia()).Returns(4);
+        var alumno2 = new Mock<Alumno>();
+        alumno2.Setup(a=> a.ObtenerNotaMedia()).Returns(6);
+        var claseConAlumnos = new Clase("Matemáticas", [alumno1.Object, alumno2.Object]);
 
         // Act
-        claseConAlumno.EliminarAlumno(alumno);
+        double resultado = claseConAlumnos.ObtenerMediaClase();
 
         // Assert
-        Assert.Empty(claseConAlumno.Alumnos);
+        Assert.Equal(5, resultado);
+    }
+
+    private List<Nota> CrearListaNotas(params double[] valores)
+    {
+        return valores.Select(v => new Nota(v)).ToList();
     }
 
 }

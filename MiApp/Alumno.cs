@@ -8,6 +8,11 @@ namespace MiApp
         public string Nombre { get; set; }
         public List<Nota> Notas { get; set; }
 
+        public Alumno()
+        {
+            
+        }
+
         public Alumno(int id, string nombre)
 
         {
@@ -45,18 +50,18 @@ namespace MiApp
 
         }
 
-        public Nota? ObtenerMejorNota()
+        public virtual Nota? ObtenerMejorNota()
 
         {
             return Notas.OrderByDescending(nota => nota.Valor).FirstOrDefault();
         }
 
-        internal Nota? ObtenerPeorNota()
+        public Nota? ObtenerPeorNota()
         {
             return Notas.OrderByDescending(nota => nota.Valor).Reverse().FirstOrDefault();
         }
 
-        public double ObtenerNotaMedia()
+        public virtual double ObtenerNotaMedia()
         {
             return Notas.Average(nota => nota.Valor);
         }

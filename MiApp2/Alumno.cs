@@ -10,7 +10,7 @@ namespace MiApp2
 
         public Alumno()
         {
-            
+            Notas = new List<Nota>();
         }
 
         public Alumno(int id, string nombre)

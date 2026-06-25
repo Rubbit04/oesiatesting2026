@@ -9,6 +9,10 @@ namespace MiApp2
             Nombre = nombre;
             Alumnos = new List<Alumno>();
         }
+        public Clase()
+        {
+            Alumnos = new List<Alumno>();
+        }
 
         internal Clase(string nombre, List<Alumno> alumnos)
         {

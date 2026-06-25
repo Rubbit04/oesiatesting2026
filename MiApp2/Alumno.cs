@@ -12,6 +12,24 @@ namespace MiApp2
         {
             Notas = new List<Nota>();
         }
+        public override bool Equals(object obj)
+        {
+            if (obj is Alumno otro)
+
+                return Nombre == otro.Nombre;
+            return false;
+        }
+
+        public override int GetHashCode() => Nombre.GetHashCode();
+
+        public Alumno(string nombre)
+
+        {
+            Nombre = nombre;
+            Notas = new List<Nota>();
+            Notas.Add(new Nota(5));
+
+        }
 
         public Alumno(int id, string nombre)
 

@@ -10,14 +10,8 @@ public class LectorFichero
         this.ruta = ruta;
     }
 
-    public List<string> LeerLineas()
+    public List<string> leerLineas()
     {
-        string[] lineas = File.ReadAllLines(ruta);
-        List<string> nuevas = new List<string>();
-        foreach (string linea in lineas)
-        {
-            nuevas.Add(linea);
-        }
-        return nuevas;
+        return new List<string>(File.ReadAllLines(ruta));
     }
 }

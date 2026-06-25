@@ -101,3 +101,8 @@
 /workspaces/oesiatesting2026/MiApp2.Test/obj/Debug/net10.0/MiApp2.Test.genruntimeconfig.cache
 /workspaces/oesiatesting2026/MiApp2.Test/obj/Debug/net10.0/ref/MiApp2.Test.dll
 /workspaces/oesiatesting2026/MiApp2.Test/bin/Debug/net10.0/datosalumnos.txt
+/workspaces/oesiatesting2026/MiApp2.Test/bin/Debug/net10.0/Castle.Core.dll
+/workspaces/oesiatesting2026/MiApp2.Test/bin/Debug/net10.0/Moq.dll
+/workspaces/oesiatesting2026/MiApp2.Test/bin/Debug/net10.0/System.Diagnostics.EventLog.dll
+/workspaces/oesiatesting2026/MiApp2.Test/bin/Debug/net10.0/runtimes/win/lib/net6.0/System.Diagnostics.EventLog.Messages.dll
+/workspaces/oesiatesting2026/MiApp2.Test/bin/Debug/net10.0/runtimes/win/lib/net6.0/System.Diagnostics.EventLog.dll

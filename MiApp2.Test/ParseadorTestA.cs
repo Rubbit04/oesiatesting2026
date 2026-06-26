@@ -9,9 +9,7 @@ public class ParseadorTestA{
 
       public ParseadorTestA()
     {
-        Mock<LectorFichero> mockLectorFichero = new Mock<LectorFichero>();
-        mockLectorFichero.Setup(l => l.leerLineas()).Returns(ObtenerLineasAlumnosClase());
-        parseador = new ParseadorDocumentoA(mockLectorFichero.Object);
+        parseador = new ParseadorDocumentoA(new Documento(ObtenerLineasAlumnosClase()));
     }
     [Fact]
     public void Obtener_Clase_Con_Alumnos_Test()

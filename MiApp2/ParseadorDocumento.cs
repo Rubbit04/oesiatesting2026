@@ -4,8 +4,37 @@ namespace MiApp2;
 public abstract class ParseadorDocumento
 {
 
+    //protected LectorFichero lectorFichero;
+    protected Documento documento;
+
+
+    public ParseadorDocumento(Documento _documento)
+    {
+        documento = _documento;
+
+    }
+
+    public static  ParseadorDocumento ObtenerParser(Documento documento)
+    {
+
+        if (documento.Cabecera().Contains("*"))
+        {
+
+            return new ParseadorDocumentoA(documento);
+        }
+        else if (documento.Cabecera().Contains("/"))
+        {
+            return new ParseadorDocumentoB(documento);
+        }
+        else
+        {
+            return new ParseadorDocumentoC(documento);
+        }
+
+    }
+
     protected abstract List<string> ObtenerLineasFiltradas();
-     protected abstract void ProcesarLinea(Clase miClase, string linea);
+    protected abstract void ProcesarLinea(Clase miClase, string linea);
     public Clase ObtenerClaseConAlumnos()
     {
         Clase miClase = new Clase();
@@ -19,8 +48,7 @@ public abstract class ParseadorDocumento
 
         return miClase;
     }
-
-     protected Alumno ObtenerOCrearAlumno(Clase miClase, string nombre)
+    protected Alumno ObtenerOCrearAlumno(Clase miClase, string nombre)
     {
 
         var alumno = miClase.Alumnos.FirstOrDefault(a => a.Nombre == nombre);
@@ -28,20 +56,17 @@ public abstract class ParseadorDocumento
         {
             alumno = new Alumno { Nombre = nombre };
             miClase.AgregarAlumno(alumno);
-            Console.WriteLine("los alumnos son"+ miClase.Alumnos.Count);
-            Console.WriteLine("alumno nombre"+ alumno.Nombre);
-            
         }
         return alumno;
     }
 
-  
 
 
 
-   
-    
-      
-    
-    
+
+
+
+
+
+
 }

@@ -3,15 +3,14 @@ namespace MiApp2.Tests;
 using MiApp2;
 using Moq;
 
-public class ParseadorTestC{
+public class ParseadorTestC
+{
 
     private readonly ParseadorDocumento parseador;
 
-      public ParseadorTestC()
+    public ParseadorTestC()
     {
-        Mock<LectorFichero> mockLectorFichero = new Mock<LectorFichero>();
-        mockLectorFichero.Setup(l => l.leerLineas()).Returns(ObtenerLineasAlumnosClase());
-        parseador = new ParseadorDocumentoC(mockLectorFichero.Object);
+        parseador = new ParseadorDocumentoC(new Documento(ObtenerLineasAlumnosClase()));
     }
     [Fact]
     public void Obtener_Clase_Con_Alumnos_Test()
@@ -27,7 +26,7 @@ public class ParseadorTestC{
         Assert.Contains(new Alumno("gema"), alumnos);
 
     }
-     [Fact]
+    [Fact]
     public void Obtener_Clase_Con_Alumnos_Numero_Notas_2_Test()
     {
 
@@ -40,7 +39,7 @@ public class ParseadorTestC{
 
     }
 
-     [Fact]
+    [Fact]
     public void Obtener_Clase_Con_Alumnos_Notas_Valor_Correcto_Test()
     {
         Clase clase = parseador.ObtenerClaseConAlumnos();
@@ -53,8 +52,8 @@ public class ParseadorTestC{
 
     }
     private List<string> ObtenerLineasAlumnosClase()
-{
-    return new List<string>
+    {
+        return new List<string>
     {
         "***********************",
         "antonio|7.5|matematicas",
@@ -64,5 +63,5 @@ public class ParseadorTestC{
         "gema|9|lengua",
         "**************************"
     };
-}
+    }
 }

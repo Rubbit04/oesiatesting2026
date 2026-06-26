@@ -8,15 +8,17 @@ public class ParseadorDocumentoA : ParseadorDocumento
     public ParseadorDocumentoA(LectorFichero _lectorFichero)
     {
         lectorFichero = _lectorFichero;
+
     }
+
+
     protected override List<string> ObtenerLineasFiltradas()
     {
-    
+
         List<string> lineas = lectorFichero.leerLineas();
         lineas.RemoveAll(linea => linea.Contains("*"));
         lineas.RemoveAll(linea => linea.Contains("-"));
         return lineas;
-
     }
 
     protected override void ProcesarLinea(Clase miClase, string linea)
@@ -28,5 +30,4 @@ public class ParseadorDocumentoA : ParseadorDocumento
         Nota nota = new Nota(double.Parse(datosLinea[2]));
         alumno.AgregarNota(nota);
     }
-
 }

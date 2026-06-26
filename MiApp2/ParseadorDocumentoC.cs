@@ -1,11 +1,11 @@
 namespace MiApp2;
 
-public class ParseadorDocumentoB : ParseadorDocumento
+public class ParseadorDocumentoC : ParseadorDocumento
 {
 
     private LectorFichero lectorFichero;
 
-    public ParseadorDocumentoB(LectorFichero _lectorFichero)
+    public ParseadorDocumentoC(LectorFichero _lectorFichero)
     {
         lectorFichero = _lectorFichero;
 
@@ -16,14 +16,14 @@ public class ParseadorDocumentoB : ParseadorDocumento
     {
 
         List<string> lineas = lectorFichero.leerLineas();
-        lineas.RemoveAll(linea => linea.Contains("/"));
+        lineas.RemoveAll(linea => linea.Contains("-"));
         lineas.RemoveAll(linea => linea.Contains("*"));
         return lineas;
     }
 
     protected override void ProcesarLinea(Clase miClase, string linea)
     {
-        string[] datosLinea = linea.Split(",");
+        string[] datosLinea = linea.Split("|");
 
         Alumno alumno = ObtenerOCrearAlumno(miClase, datosLinea[0]);
 

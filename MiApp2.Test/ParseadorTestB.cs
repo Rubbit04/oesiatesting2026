@@ -1,23 +1,24 @@
 namespace MiApp2.Tests;
-/*
+
 using MiApp2;
 using Moq;
 
-public class TransformadorTestB{
+public class ParseadorTestB
+{
 
-    private readonly TransformadorClase transformadorClase;
+    private readonly ParseadorDocumento parseador;
 
-      public TransformadorTestB()
+    public ParseadorTestB()
     {
         Mock<LectorFichero> mockLectorFichero = new Mock<LectorFichero>();
         mockLectorFichero.Setup(l => l.leerLineas()).Returns(ObtenerLineasAlumnosClase());
-        transformadorClase = new TransformadorClase(mockLectorFichero.Object);
+        parseador = new ParseadorDocumentoB(mockLectorFichero.Object);
     }
-    [Fact (Skip ="no operativo")]
+    [Fact]
     public void Obtener_Clase_Con_Alumnos_Test()
     {
 
-        Clase clase = transformadorClase.ObtenerClaseConAlumnos();
+        Clase clase = parseador.ObtenerClaseConAlumnos();
         List<Alumno> alumnos = clase.Alumnos;
 
         Assert.Equal(2, alumnos.Count);
@@ -27,11 +28,11 @@ public class TransformadorTestB{
         Assert.Contains(new Alumno("gema"), alumnos);
 
     }
-    [Fact (Skip ="no operativo")]
+    [Fact]
     public void Obtener_Clase_Con_Alumnos_Numero_Notas_2_Test()
     {
 
-        Clase clase = transformadorClase.ObtenerClaseConAlumnos();
+        Clase clase = parseador.ObtenerClaseConAlumnos();
         List<Alumno> alumnos = clase.Alumnos;
         // cada alumno tiene 2 notas
         Assert.Equal(2, alumnos[0].Notas.Count);
@@ -40,10 +41,10 @@ public class TransformadorTestB{
 
     }
 
-     [Fact (Skip ="no operativo")]
+    [Fact]
     public void Obtener_Clase_Con_Alumnos_Notas_Valor_Correcto_Test()
     {
-        Clase clase = transformadorClase.ObtenerClaseConAlumnos();
+        Clase clase = parseador.ObtenerClaseConAlumnos();
         List<Alumno> alumnos = clase.Alumnos;
         // las notas son las correctas
         Assert.Contains(new Nota(7.5), alumnos[0].Notas);
@@ -52,9 +53,9 @@ public class TransformadorTestB{
         Assert.Contains(new Nota(9), alumnos[1].Notas);
 
     }
-private List<string> ObtenerLineasAlumnosClase()
-{
-    return new List<string>
+    private List<string> ObtenerLineasAlumnosClase()
+    {
+        return new List<string>
     {
         "/////////////////",
         "antonio,7.5,matematicas",
@@ -64,7 +65,5 @@ private List<string> ObtenerLineasAlumnosClase()
         "gema,9,lengua",
         "/////////////////"
     };
+    }
 }
-}
-
-*/
